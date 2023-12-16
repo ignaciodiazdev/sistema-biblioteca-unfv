@@ -1,0 +1,9 @@
+# Archivos y directorios locales
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Entorno virtual (venv)
+venv/
