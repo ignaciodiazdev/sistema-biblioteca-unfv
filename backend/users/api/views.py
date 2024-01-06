@@ -8,7 +8,7 @@ from users.models import User
 from users.api.serializers import UserSerializer
 
 class UserApiViewSet(ModelViewSet):
-  permission_classes = [IsAdminUser]
+  permission_classes = [IsAuthenticatedOrReadOnly]
   serializer_class = UserSerializer
   queryset = User.objects.all()
 

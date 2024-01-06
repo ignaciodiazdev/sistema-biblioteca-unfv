@@ -19,7 +19,7 @@ class DocumentoViewSet(ModelViewSet):
     serializer_class = DocumentoSerializer
     queryset = Documento.objects.all()
     filter_backends = [DjangoFilterBackend, OrderingFilter]
-    filterset_fields = {'titulo' : ['icontains'], 'tipo' : ['exact'], 'id': ['exact']}
+    filterset_fields = {'titulo' : ['icontains'], 'tipo' : ['exact'], 'id': ['exact'], 'biblioteca' : ['exact']}
     ordering_fields = '__all__'
     # filter_backends = [filters.SearchFilter]
     # search_fields = ['titulo','isbn']

@@ -35,21 +35,21 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
       icon: <FieldTimeOutlined />,
       label: <Link to="/plataforma/reservas">Reservas</Link>,
     },
-    {
-      key: "prestamos",
-      icon: <BarsOutlined />,
-      label: "Préstamos",
-      children: [
-        {
-          key: "prestados",
-          label: <Link to="/plataforma/prestamos">Prestados</Link>,
-        },
-        {
-          key: "rechazados",
-          label: "Rechazados",
-        },
-      ],
-    },
+    // {
+    //   key: "prestamos",
+    //   icon: <BarsOutlined />,
+    //   label: "Préstamos",
+    //   children: [
+    //     {
+    //       key: "prestados",
+    //       label: <Link to="/plataforma/prestamos">Prestados</Link>,
+    //     },
+    //     {
+    //       key: "rechazados",
+    //       label: "Rechazados",
+    //     },
+    //   ],
+    // },
     {
       key: "cerrar-sesion",
       icon: <LogoutOutlined />,

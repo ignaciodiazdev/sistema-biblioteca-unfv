@@ -1,4 +1,5 @@
 export * from './Table';
+export * from './TableBasic';
 export * from './Card';
 export * from './Loading';
 export * from './ModalBasic'

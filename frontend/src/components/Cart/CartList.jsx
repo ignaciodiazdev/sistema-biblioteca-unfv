@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useApp } from "../../hooks";
-import { Button, Image } from "antd";
-import { DeleteFilled } from "@ant-design/icons";
 import {Link} from 'react-router-dom'
+import { CartDetail } from "./";
+import { Button } from "antd";
 
 export const CartList = ({ onClose, buttonsCart }) => {
   const { cart, removeToCart } = useApp();
@@ -14,28 +14,12 @@ export const CartList = ({ onClose, buttonsCart }) => {
           <>
             <div className="carrito__body">
               {cart.map((item, index) => (
-                <div className="item" key={index}>
-                  <div className="item__img">
-                    <Image src={item.imagen} alt={item.titulo} />
-                  </div>
-                  <div className="item__info">
-                    <h2>{item.titulo}</h2>
-                    <p>Tipo: {item.tipo_data.tipo}</p>
-                    <p>
-                      Autor:{" "}
-                      {item.autores_data.map((autor) => autor.nombre + ". ")}
-                    </p>
-                    <p>ISBN: {item.isbn}</p>
-                    <Button
-                      type="dashed"
-                      className="mt-2 d-flex align-items-center"
-                      size="small"
-                      onClick={() => removeToCart(item)}
-                    >
-                      <DeleteFilled/>Eliminar
-                    </Button>
-                  </div>
-                </div>
+                <CartDetail 
+                  key={index}
+                  item={item}
+                  {...item.documento_data} 
+                  removeToCart={removeToCart}
+                />
               ))}
             </div>
             {buttonsCart === false ? null : (
@@ -50,14 +34,6 @@ export const CartList = ({ onClose, buttonsCart }) => {
                 </Link>
               </div>
             )}
-            {/* <div className="carrito__botones">
-              <Button type="dashed" size="large" block onClick={onClose}>
-                Seguir Reservando
-              </Button>
-              <Button type="primary" size="large" block>
-                Finalizar Reserva
-              </Button>
-            </div> */}
           </>
         ) : (
           <div className="carrito__vacio">
@@ -115,5 +91,4 @@ const Container = styled.div`
       }
     }
   }
-
 `;

@@ -79,7 +79,6 @@ const Container = styled.div`
   }
   .ant-card{
     border: none !important;
-    /* overflow: hidden !important; */
   }
   .imgSearch{
     display: flex;

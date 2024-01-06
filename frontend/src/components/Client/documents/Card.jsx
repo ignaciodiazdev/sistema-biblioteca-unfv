@@ -37,7 +37,7 @@ export const Card = ({
       toast.success("Producto agregado al carrito");
     }
   }
-
+  console.log(documento)
   return (
     <Container
       className="py-3 p-lg-3"

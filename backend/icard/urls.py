@@ -27,6 +27,10 @@ from documentos.api.router import router_tipo
 from idiomas.api.router import router_idioma
 from tipos_usuarios.api.router import router_tipo_usuario
 from prestamos.api.router import router_prestamo
+from facultades.api.router import router_facultades
+from escuelas.api.router import router_escuelas
+from bibliotecas.api.router import router_bibliotecas
+from inventarios.api.router import router_inventarios
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -50,7 +54,11 @@ urlpatterns = [
     path('api/', include(router_tipo.urls)),
     path('api/', include(router_idioma.urls)),
     path('api/', include(router_tipo_usuario.urls)),
-    path('api/', include(router_prestamo.urls))
+    path('api/', include(router_prestamo.urls)),
+    path('api/', include(router_facultades.urls)),
+    path('api/', include(router_escuelas.urls)),
+    path('api/', include(router_bibliotecas.urls)),
+    path('api/', include(router_inventarios.urls)),
 ]
 
 # Agregamos las MEDIA a URLS

@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'idiomas',
     'tipos_usuarios',
     'prestamos',
+    'facultades',
+    'escuelas',
+    'bibliotecas',
+    'inventarios',
     'django_filters',
     # 'documentos_autores'
 ]
@@ -88,12 +92,12 @@ WSGI_APPLICATION = 'icard.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'biblioteca-unfv',
-        'USER': 'postgres',
-        'PASSWORD': '123',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'biblioteca_unfv',
+        'USER': 'root',
+        'PASSWORD': 'admin',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
     }
 }
 

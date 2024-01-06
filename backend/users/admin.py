@@ -4,12 +4,12 @@ from users.models import User
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-  list_display = ('username', 'dni','first_name', 'last_name', 'codigo_insti', 'is_staff')
+  list_display = ('id','username', 'dni','first_name', 'last_name', 'codigo_insti', 'is_staff')
   fieldsets = (
     (None, {'fields': ('username', 'password')}),
     ('Información personal', 
       {
-        'fields': ('first_name', 'last_name', 'dni', 'codigo_insti', 'celular', 'tipo_usuario', 'email', 'image')
+        'fields': ('first_name', 'last_name', 'dni', 'codigo_insti', 'celular', 'tipo_usuario', 'email', 'image', 'escuela', 'biblioteca')
       }
     ),
     ('Permisos',

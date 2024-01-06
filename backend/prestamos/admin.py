@@ -6,4 +6,4 @@ from .models import Prestamo
 
 class PrestamoAdmin(admin.ModelAdmin):
   search_fields = ['id', 'usuario__username']
-  list_display = ('id', 'usuario', 'documento', 'fecha_prestamo', 'fecha_devolucion', 'estado_prestamo')
+  list_display = ('id', 'usuario', 'fecha_reserva', 'fecha_recojo', 'fecha_devolucion','estado_prestamo')

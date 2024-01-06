@@ -23,20 +23,17 @@ export const CheckoutForm = () => {
 
   const onSubmit = async (data) => {
     if(cart.length === 0) return toast.error("No hay documentos en el carrito!");
-
-    for (const documento of cart) {
-      // Crea un objeto con la misma fecha de recojo para cada documento
-      const objetoParaEnviar = {
-        documento: documento.id,
-        fecha_recojo: data.fecha_recojo,
-        usuario: auth.me.id,
-        fecha_devolucion: calculateReturnDate(data.fecha_recojo),
-      };
-
-      console.log("Datos del formulario:", objetoParaEnviar);
-      await postPrestamos(objetoParaEnviar);
-      // Realiza el POST a la API con el objeto generado
-    }
+    const documentosIds = cart.map((documento) => documento.id);
+    const objetoParaEnviar = {
+      fecha_reserva: new Date().toISOString().split("T")[0],
+      fecha_recojo: data.fecha_recojo,
+      fecha_devolucion: calculateReturnDate(data.fecha_recojo),
+      usuario: auth.me.id,
+      inventario: documentosIds,
+      //codigo de fecha actual
+    };
+    console.log("Datos del formulario:", objetoParaEnviar);
+    await postPrestamos(objetoParaEnviar);
     // Realiza la lógica para enviar los datos a tu API
     removeStorageCarrito();
     setCart([]);
@@ -59,7 +56,7 @@ export const CheckoutForm = () => {
   // Función para calcular la fecha de devolución (2 días después de la fecha de recojo)
   const calculateReturnDate = (fecha_recojo) => {
     const fechaRecojo = new Date(fecha_recojo);
-    fechaRecojo.setDate(fechaRecojo.getDate() + 2);
+    fechaRecojo.setDate(fechaRecojo.getDate() + 3);
 
     // Verificar si la fecha calculada es válida antes de aplicar toISOString
     if (!isNaN(fechaRecojo.getTime())) {

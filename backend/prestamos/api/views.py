@@ -17,8 +17,9 @@ class PrestamoViewSet(viewsets.ModelViewSet):
   serializer_class = PrestamoSerializer
   queryset = Prestamo.objects.all()
   filter_backends = [DjangoFilterBackend, OrderingFilter]
-  filterset_fields = ['usuario', 'documento', 'estado_prestamo']
-  ordering_fields = '__all__'
+  filterset_fields = ['usuario', 'estado_prestamo']
+  ordering_fields = ['fecha_reserva']
+  ordering = ['-fecha_reserva'] 
 
   # def create(self, request, *args, **kwargs):
   #     # Imprimir el valor de 'request.data'
@@ -28,61 +29,53 @@ class PrestamoViewSet(viewsets.ModelViewSet):
   #     return super().create(request, *args, **kwargs)
 
 
-  # Código para modificar el valor cantidad de un documento, cuando se crea un prestamo nuevo, se resta 1
-  # y cuando el estado del prestamo es devuelto, se suma 1
-  def create(self, request, *args, **kwargs):
-    with transaction.atomic():
-      try:
-        documento = Documento.objects.get(pk=request.data['documento'])
-        print("Cantidad de documentos antes: ", documento.cantidad)
+# <------------------------------ INICIO --------------------------------------->
+  # (ORIGINAL) Código para modificar el valor cantidad de un documento, cuando se crea un prestamo nuevo, se resta 1 y cuando el estado del prestamo es devuelto, se suma 1
+  # def create(self, request, *args, **kwargs):
+  #   with transaction.atomic():
+  #     try:
+  #       documento = Documento.objects.get(pk=request.data['documento'])
+  #       print("Cantidad de documentos antes: ", documento.cantidad)
 
-        if documento.cantidad > 0:
-          documento.cantidad -= 1
-          documento.save()
-          print("Cantidad de documentos despues: ", documento.cantidad)
+  #       if documento.cantidad > 0:
+  #         documento.cantidad -= 1
+  #         documento.save()
+  #         print("Cantidad de documentos despues: ", documento.cantidad)
           
-          return super().create(request, *args, **kwargs)
-        else:
-          return Response({'detail': 'El documento ' + documento.titulo + ' no se encuentra disponible en estos momentos.'}, status=status.HTTP_400_BAD_REQUEST)
-      except Exception as e:
-        logging.error(e)
-        return Response({'detail': 'No se pudo crear el prestamo'}, status=status.HTTP_400_BAD_REQUEST)
-      
-  #Código para aumentar la cantidad de documentos cuando el estado del prestamo es devuelto
-  def update(self, request, *args, **kwargs):
-      # prestamo = Prestamo.objects.get(pk=kwargs['pk'])
-      # documento = Documento.objects.get(pk=prestamo.documento.pk)
-      # print("Cantidad de documentos antes: ", documento.cantidad)
-
-      # if prestamo.estado_prestamo == 'DEVUELTO' and request.data['estado_prestamo'] != 'DEVUELTO':
-      #   documento.cantidad += 1
-      #   documento.save()
-      #   print("Cantidad de documentos despues: ", documento.cantidad)
-        
-      #   return super().update(request, *args, **kwargs)
-    try:
-        prestamo = Prestamo.objects.get(pk=kwargs['pk'])
-        documento = Documento.objects.get(pk=prestamo.documento.pk)
-        print("Cantidad de documentos antes: ", documento.cantidad)
-        print("Datos de la solicitud:", request.data)
-
-
-        if prestamo.estado_prestamo != "DEVUELTO" and request.data['estado_prestamo'] == "DEVUELTO":
-            documento.cantidad += 1
-            documento.save()
-            print("Cantidad de documentos despues: ", documento.cantidad)
-
-    except Prestamo.DoesNotExist:
-        # Manejar la excepción cuando no se encuentra el Prestamo
-        return Response({'error': 'Prestamo no encontrado'}, status=status.HTTP_404_NOT_FOUND)
-
-    except Documento.DoesNotExist:
-        # Manejar la excepción cuando no se encuentra el Documento
-        return Response({'error': 'Documento no encontrado'}, status=status.HTTP_404_NOT_FOUND)
-
-    return super().update(request, *args, **kwargs)
+  #         return super().create(request, *args, **kwargs)
+  #       else:
+  #         return Response({'detail': 'El documento ' + documento.titulo + ' no se encuentra disponible en estos momentos.'}, status=status.HTTP_400_BAD_REQUEST)
+  #     except Exception as e:
+  #       logging.error(e)
+  #       return Response({'detail': 'No se pudo crear el prestamo'}, status=status.HTTP_400_BAD_REQUEST)
+# <------------------------------- FIN ------------------------------------------------>
   
-  # <--------------------------------------------------------------------------------------->
+# <--------------------------------- INICIO ------------------------------------------->
+  #(ORIGINAL)Código para aumentar la cantidad de documentos cuando el estado del prestamo es devuelto.
+  # def update(self, request, *args, **kwargs):
+  #   try:
+  #       prestamo = Prestamo.objects.get(pk=kwargs['pk'])
+  #       documento = Documento.objects.get(pk=prestamo.documento.pk)
+  #       print("Cantidad de documentos antes: ", documento.cantidad)
+  #       print("Datos de la solicitud:", request.data)
+
+
+  #       if prestamo.estado_prestamo != "DEVUELTO" and request.data['estado_prestamo'] == "DEVUELTO":
+  #           documento.cantidad += 1
+  #           documento.save()
+  #           print("Cantidad de documentos despues: ", documento.cantidad)
+
+  #   except Prestamo.DoesNotExist:
+  #       return Response({'error': 'Prestamo no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+  #   except Documento.DoesNotExist:
+  #       return Response({'error': 'Documento no encontrado'}, status=status.HTTP_404_NOT_FOUND)
+
+  #   return super().update(request, *args, **kwargs)
+# <------------------------------------- FIN ------------------------------------------------>
+  
+
+# <----------------------------- OTROS CÓDIGOS BUENOS ------------------------------------->
   # Código para modificar el valor cantidad de un documento, cuando se crea un prestamo nuevo, se resta 1, suponiendo que el campo documento es de tipo many to many
   
   # def create(self, request, *args, **kwargs):
@@ -128,4 +121,4 @@ class PrestamoViewSet(viewsets.ModelViewSet):
   #     # Manejar la excepción cuando no se encuentra el Documento
   #     return Response({'error': 'Documento no encontrado'}, status=status.HTTP_404_NOT_FOUND)
   #   return super().update(request, *args, **kwargs)
-  # <--------------------------------------------------------------------------------------->
+# <--------------------------------------------------------------------------------------->

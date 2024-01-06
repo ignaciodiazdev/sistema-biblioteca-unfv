@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import { CheckoutForm } from "../../components/Checkout";
-import { useApp } from "../../hooks";
 import { CartList } from "../../components/Cart";
 
 export const Checkout = () => {
-  const { cart } = useApp();
   return (
     <Container>
       <h1>Checkout</h1>

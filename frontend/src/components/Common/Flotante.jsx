@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button, Popover, ConfigProvider } from "antd";
+import { IconNotify } from "../Layout";
 const text = <span style={{fontSize: "18px"}}>Notificaciones</span>;
 const content = (
   <div>
@@ -20,10 +21,17 @@ export const Flotante = () => {
         trigger={["click"]}
         overlayStyle={{width: "300px"}}
       >
-        <Button>Notify</Button>
+        <Button className="ant-btn-primary"><IconNotify/></Button>
       </Popover>
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  button{
+    border: none;
+  }
+  svg{
+    font-size: 17px !important;
+  }
+`;

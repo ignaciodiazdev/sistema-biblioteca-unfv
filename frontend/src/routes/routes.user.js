@@ -1,11 +1,12 @@
 import { UserLayout } from "../layouts";
 import { Catalogo, Perfil, Prestamos, Reservas, Checkout } from '../pages/User'
+import { Catalogo2 } from "../pages/User/Catalogo2";
 
 const routesUser = [
   {
     path: "/plataforma",
     layout: UserLayout,
-    page: Catalogo,
+    page: Catalogo2,
   },
   {
     path: "/plataforma/perfil",

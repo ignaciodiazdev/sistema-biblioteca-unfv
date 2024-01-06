@@ -1,13 +1,15 @@
 import styled from "styled-components";
+import { FaCamera } from "react-icons/fa";
 import { useApp } from "../../hooks";
 import iconUsuario from "../../assets/login/icon-usuario.png";
 import banner from "../../assets/User/banner-perfil.png";
-import {BASE_API} from '../../utils/constants'
+import { BASE_API } from "../../utils/constants";
+import { ModalBasic } from "./ModalBasic";
 
 export const CardPerfil = ({ padding }) => {
   const { auth } = useApp();
 
-  console.log(auth.me)
+  console.log(auth.me);
   return (
     <Container className="section-perfil" padding={padding}>
       <div className="banner">
@@ -15,7 +17,16 @@ export const CardPerfil = ({ padding }) => {
       </div>
       <div className="section-perfil__datos">
         <div className="section-perfil__datos__foto">
-          <img src={auth.me.image ? BASE_API + auth.me.image : iconUsuario} alt="foto" />
+          <img
+            src={auth.me.image ? BASE_API + auth.me.image : iconUsuario}
+            alt="foto"
+          />
+          <ModalBasic
+            title={"Carrito de Documentos"}
+            icon={<FaCamera />}
+            children={<input type="file" />}
+            buttons={null}
+          />
         </div>
         <div className="section-perfil__datos__info">
           <div className="section-perfil__datos__info__group-input">
@@ -50,7 +61,7 @@ export const CardPerfil = ({ padding }) => {
 
 const Container = styled.div`
   background: rgb(255, 255, 255); // Light*/
-  border:  1px solid #e4e4e4; //Light
+  border: 1px solid #e4e4e4; //Light
   /* color: #b1b1b1;
   background: #191c24 !important; */
   backdrop-filter: blur(10px);
@@ -94,6 +105,27 @@ const Container = styled.div`
           height: 150px;
           object-fit: cover;
           border-radius: 50%;
+        }
+        button{
+          position: absolute;
+          bottom: 8%;
+          right: 0;
+          background: #e4e6eb;
+          border: none;
+          border-radius: 50%;
+          padding: 0.5rem;
+          cursor: pointer;
+          outline: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          svg{
+            color: #000000;
+            font-size: 1.2rem;
+          }
+        }
+        button:hover{
+          background: #cfd0d3 !important;
         }
       }
       &__info {

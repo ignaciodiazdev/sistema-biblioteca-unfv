@@ -54,10 +54,10 @@ export const UserLayout = ({ children }) => {
               )}
             </div>
             <div className="header__right">
-              <ToggleThemeButton
+              {/* <ToggleThemeButton
                 theme={theme}
                 toggleTheme={CambiarTheme}
-              />
+              /> */}
               {
                 auth?.me.is_staff ? (
                   null
@@ -65,7 +65,7 @@ export const UserLayout = ({ children }) => {
                   <BtnCart/>
                 )
               }
-              <IconNotify/>
+              {/* <IconNotify/> */}
               <Flotante/>
               <DropdownButton/>
             </div>
