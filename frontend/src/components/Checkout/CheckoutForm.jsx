@@ -33,11 +33,19 @@ export const CheckoutForm = () => {
       //codigo de fecha actual
     };
     console.log("Datos del formulario:", objetoParaEnviar);
-    await postPrestamos(objetoParaEnviar);
+    const response =  await postPrestamos(objetoParaEnviar);
+    if(typeof response === 'string') {
+      toast.error(response)
+    } else {
+      toast.success('Préstamo exitoso! 🎉')
+      removeStorageCarrito();
+      setCart([]);
+      navigate('/plataforma/reservas')
+    }
+
     // Realiza la lógica para enviar los datos a tu API
-    removeStorageCarrito();
-    setCart([]);
-    navigate('/plataforma')
+
+    // toast.success("Préstamo registrado con éxito!");
   };
   const disabledDate = (current) => {
     const dayOfWeek = current.day();

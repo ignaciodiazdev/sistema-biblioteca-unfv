@@ -3,8 +3,8 @@ import { FaCamera } from "react-icons/fa";
 import { useApp } from "../../hooks";
 import iconUsuario from "../../assets/login/icon-usuario.png";
 import banner from "../../assets/User/banner-perfil.png";
-import { BASE_API } from "../../utils/constants";
 import { ModalBasic } from "./ModalBasic";
+import { ActualizarFoto } from "../User";
 
 export const CardPerfil = ({ padding }) => {
   const { auth } = useApp();
@@ -18,13 +18,13 @@ export const CardPerfil = ({ padding }) => {
       <div className="section-perfil__datos">
         <div className="section-perfil__datos__foto">
           <img
-            src={auth.me.image ? BASE_API + auth.me.image : iconUsuario}
+            src={auth.me.image ? auth.me.image : iconUsuario}
             alt="foto"
           />
           <ModalBasic
-            title={"Carrito de Documentos"}
+            title={"Actualizar Foto"}
             icon={<FaCamera />}
-            children={<input type="file" />}
+            children={<ActualizarFoto />}
             buttons={null}
           />
         </div>
@@ -97,9 +97,8 @@ const Container = styled.div`
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        border: 2px solid #bbbbbb;
         padding: 4px;
-        background: #dbdada;
+        background: #ffffff;
         img {
           width: 150px;
           height: 150px;

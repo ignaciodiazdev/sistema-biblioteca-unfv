@@ -8,13 +8,12 @@ import {
 import { Dropdown, Space } from "antd";
 import { Link } from "react-router-dom";
 import { useApp } from "../../hooks";
-import { BASE_API } from "../../utils/constants";
 import { useMediaQuery } from "react-responsive";
 import iconUsuario from "../../assets/login/icon-usuario.png";
 
 export const DropdownButton = () => {
   const { logout, auth } = useApp();
-  const {first_name, last_name, image} = auth.me;
+  const {first_name, last_name, image, tipo_usuario} = auth.me;
   const items = [
     {
       label: "Carrito",
@@ -56,11 +55,15 @@ export const DropdownButton = () => {
         <a onClick={(e) => e.preventDefault()}>
           <Space className="mainButton">
             {image ? (
-              <img src={`${BASE_API + image}`} alt="avatar" />
+              <img src={`${image}`} alt="avatar" />
             ) : (
               <img src={iconUsuario} alt="avatar" />
             )}
-            {isMobile ? null : <span>{`${first_name} ${last_name}`}</span>}
+            {isMobile ? null : (
+              <div>
+                <span>{`${first_name} ${last_name}`}</span>
+              </div>
+            )}
             <CaretDownOutlined />
           </Space>
         </a>
@@ -81,6 +84,7 @@ const Container = styled.div`
       width: 35px;
       height: 35px;
       border-radius: 50%;
+      object-fit: cover;
     }
   }
   .ant-dropdown-menu {

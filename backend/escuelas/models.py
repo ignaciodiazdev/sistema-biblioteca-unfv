@@ -10,4 +10,4 @@ class Escuela(models.Model):
     db_table = 'escuelas'
 
   def __str__(self):
-    return self.nombre
+    return "Escuela Profesional de " + self.nombre 

@@ -19,7 +19,7 @@ class Documento(models.Model):
   anio_publicacion = models.DateField()
   descripcion = models.TextField()
   cod_barras = models.CharField(max_length=50)
-  imagen = models.ImageField(upload_to='documentos', null=True)
+  imagen = models.ImageField(upload_to='documentos', null=True, blank=True)
   idioma = models.ForeignKey(Idioma, on_delete=models.CASCADE)
   tipo = models.ForeignKey(Tipo, on_delete=models.CASCADE)
   autor = models.ManyToManyField(Autor)

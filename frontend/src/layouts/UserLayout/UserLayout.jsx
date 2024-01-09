@@ -16,7 +16,12 @@ import "./UserLayout.css";
 import { ThemeProvider } from "styled-components";
 import { Light, Dark } from "../../styles/Themes";
 import { setStorageTema } from "../../api/tema";
-import { BtnMenuMobile, BtnMenuDesktop, IconNotify, BtnCart } from "../../components/Layout";
+import {
+  BtnMenuMobile,
+  BtnMenuDesktop,
+  IconNotify,
+  BtnCart,
+} from "../../components/Layout";
 
 export const UserLayout = ({ children }) => {
   const { theme, setTheme, auth } = useApp();
@@ -45,11 +50,23 @@ export const UserLayout = ({ children }) => {
           <Header className="header">
             <div className="header__left">
               {isMobile ? (
-                <BtnMenuMobile showDrawer={showDrawer}/>
+                <BtnMenuMobile showDrawer={showDrawer} />
               ) : (
                 <div className="d-flex aligns-items-center gap-2">
-                  <BtnMenuDesktop collapsed={collapsed} setCollapsed={setCollapsed}/>
-                  <span style={{fontSize: "21px", paddingBottom: "6px", fontWeight: "500", color: "#fff"}}>Biblioteca UNFV</span>
+                  <BtnMenuDesktop
+                    collapsed={collapsed}
+                    setCollapsed={setCollapsed}
+                  />
+                  <span
+                    style={{
+                      fontSize: "21px",
+                      paddingBottom: "6px",
+                      fontWeight: "500",
+                      color: "#fff",
+                    }}
+                  >
+                    Biblioteca UNFV
+                  </span>
                 </div>
               )}
             </div>
@@ -58,16 +75,9 @@ export const UserLayout = ({ children }) => {
                 theme={theme}
                 toggleTheme={CambiarTheme}
               /> */}
-              {
-                auth?.me.is_staff ? (
-                  null
-                ) : (
-                  <BtnCart/>
-                )
-              }
-              {/* <IconNotify/> */}
-              <Flotante/>
-              <DropdownButton/>
+              {auth?.me.is_staff ? null : <BtnCart />}
+              <Flotante />
+              <DropdownButton />
             </div>
           </Header>
           <Drawer
@@ -94,6 +104,7 @@ export const UserLayout = ({ children }) => {
                 <MenuList theme="light" />
               </Sider>
             )}
+
             <Content className="content">{children}</Content>
           </Layout>
         </Layout>
@@ -116,7 +127,16 @@ const Container = styled.div`
     background: #ffffff;
     padding: 30px 0;
     padding-right: 30px !important;
-    background: linear-gradient(120deg, rgb(235 86 86) 0%, rgb(255 130 60) 18%, rgb(251 92 67) 42%, rgb(239 110 101) 61%, rgb(232 88 92) 78%, rgb(223 77 97) 89%, rgb(213 57 90) 100%);
+    background: linear-gradient(
+      120deg,
+      rgb(235 86 86) 0%,
+      rgb(255 130 60) 18%,
+      rgb(251 92 67) 42%,
+      rgb(239 110 101) 61%,
+      rgb(232 88 92) 78%,
+      rgb(223 77 97) 89%,
+      rgb(213 57 90) 100%
+    );
     &__right {
       display: flex;
       align-items: center;
@@ -151,7 +171,8 @@ const Container = styled.div`
     }
     > div {
       @media screen and (min-width: 992px) {
-        width: ${({ collapsed }) => (collapsed ? "calc(100% - 80px)" : "calc(100% - 250px) !important")};
+        width: ${({ collapsed }) =>
+          collapsed ? "calc(100% - 80px)" : "calc(100% - 250px) !important"};
         transition: all 0.3s ease;
       }
     }
@@ -168,7 +189,7 @@ const Container = styled.div`
     color: #ffffff;
     padding: 5px 0px 0px 0px;
     gap: 10px;
-    height: 120px;
+    height: 140px;
     p {
       color: #000000;
     }
@@ -189,7 +210,7 @@ const Container = styled.div`
     height: 78px !important;
   }
   .logo-name {
-    height: 10px;
+    height: 30px;
   }
   .menu-bar {
     display: flex;

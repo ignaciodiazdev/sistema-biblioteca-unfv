@@ -26,12 +26,9 @@ export function usePrestamos() {
   const postPrestamos = async (data) => {
     try {
       setLoading(true);
-      // await postPrestamosApi(data, auth.token);
       const response = await postPrestamosApi(data, auth.token);
-      if(typeof response === 'string') {
-        toast.error(response)
-      }
       setLoading(false);
+      return response;
 
     } catch (error) {
       setLoading(false);

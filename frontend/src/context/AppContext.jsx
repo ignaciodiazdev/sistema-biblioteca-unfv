@@ -37,6 +37,9 @@ export const AppProvider = ({children}) => {
       }else{
         setAuth(null);
       }
+      // if(auth?.me?.code === 401){
+      //   logout();
+      // }
     })()
   }, [])
 
@@ -57,7 +60,7 @@ export const AppProvider = ({children}) => {
     // Lógica para que solo se agreguen 2 productos al carrito si es estudiante 
     // y máximo 3 si es profesor.
     let maximo = 0;
-    if (auth.me.tipo_usuario === 2) maximo = 2 
+    if (auth.me.tipo_usuario_data.id === 2) maximo = 2 
     else maximo = 3;
 
     console.log(maximo)

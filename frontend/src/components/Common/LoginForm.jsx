@@ -16,6 +16,7 @@ export const LoginForm = () => {
     console.log(data);
     try {
       const response = await loginApi(data);
+      console.log(response)
       const { access } = response;
       console.log(access);
       login(access);

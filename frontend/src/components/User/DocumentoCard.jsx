@@ -43,12 +43,15 @@ export const DocumentoCard = ({
       <div className="container">
         <div className="row">
           <div className="col-4 col-md-2 col-xxl-2 containerImg">
-            <img src={imagen} alt={titulo} onError={handleImageError} />
+            {/* <img src={imagen} alt={titulo} onError={handleImageError} /> */}
+            {
+              imagen ? <img src={imagen} alt={titulo} /> : <img src={iconLibro} alt={titulo}/>
+            }
           </div>
           <div className="col-8 col-md-10 col-xxl-10 containerDetail">
             <div className="row gap-3 gap-md-0">
               <div className="col-md-8">
-                {/* <span className="tipo">{tipo_data.tipo}</span> */}
+                <span className="tipo">{tipo_data.tipo}</span>
                 <h5>{titulo}</h5>
                 <div className="autores">
                   {autores_data.map((autor) => (
@@ -77,7 +80,7 @@ export const DocumentoCard = ({
                     <Button
                       onClick={() => handleCart(documento)}
                       block
-                      disabled={cantidad === 0}
+                      disabled={documento.stock_actual === 0}
                     >
                       Reservar
                     </Button>

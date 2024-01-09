@@ -38,3 +38,23 @@ export async function getMeApi(token){
     throw error
   }
 }
+
+export async function patchUserApi(token, id, data){
+  try{
+    const url = `${BASE_API}/api/users/${id}/`;
+    const params = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+    const response = await fetch(url, params);
+    const result = response.json();
+    return result;
+    
+  }catch(error){
+    throw error
+  }
+}

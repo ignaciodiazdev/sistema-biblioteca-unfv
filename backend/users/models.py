@@ -10,7 +10,7 @@ class User(AbstractUser):
   codigo_insti = models.CharField(max_length=10, null=True)
   dni = models.CharField(max_length=8, null=True)
   celular = models.CharField(max_length=9, null=True)
-  image = models.ImageField(upload_to='users', null=True, blank=True)
+  image = models.TextField(null=True, blank=True)
   tipo_usuario = models.ForeignKey(TipoUsuario, on_delete=models.CASCADE, null=True)
   escuela = models.ForeignKey(Escuela, on_delete=models.CASCADE, null=True)
   biblioteca = models.ForeignKey(Biblioteca, on_delete=models.CASCADE, null=True)
