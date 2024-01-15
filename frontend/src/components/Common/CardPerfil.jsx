@@ -38,20 +38,28 @@ export const CardPerfil = ({ padding }) => {
             <input type="text" value={auth.me.last_name} readOnly />
           </div>
           <div className="section-perfil__datos__info__group-input">
-            <label>Correo:</label>
-            <input type="text" value={auth.me.username} readOnly />
-          </div>
-          <div className="section-perfil__datos__info__group-input">
             <label>DNI:</label>
             <input type="text" value={auth.me.dni} readOnly />
           </div>
           <div className="section-perfil__datos__info__group-input">
-            <label>Telefono: </label>
-            <input type="text" value={auth.me.celular} readOnly />
+            <label>Facultad: </label>
+            <input type="text" value={auth.me.escuela_data.facultad_data.nombre} readOnly />
+          </div>
+          <div className="section-perfil__datos__info__group-input">
+            <label>Escuela: </label>
+            <input type="text" value={"Escuela de "+auth.me.escuela_data.nombre} readOnly />
           </div>
           <div className="section-perfil__datos__info__group-input">
             <label>Codigo Institucional: </label>
             <input type="text" value={auth.me.codigo_insti} readOnly />
+          </div>
+          <div className="section-perfil__datos__info__group-input">
+            <label>Correo:</label>
+            <input type="text" value={auth.me.username} readOnly />
+          </div>
+          <div className="section-perfil__datos__info__group-input">
+            <label>Telefono: </label>
+            <input type="text" value={auth.me.celular} readOnly />
           </div>
         </div>
       </div>

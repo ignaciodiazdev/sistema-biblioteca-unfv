@@ -1,13 +1,16 @@
 import styled from "styled-components";
 import {Image} from 'antd'
-
+import iconLibro from "../../assets/Client/libro-default.svg";
 export const DocumentoDetalle = ({documento}) => {
   return (
     <Container>
       <div className="documento">
         <div className="documento__header">
           <div className="documento__header__imagen">
-            <Image src={documento?.imagen} alt="" className="" />
+            {/* <Image src={documento?.imagen} alt="" className="" /> */}
+            {
+              documento?.imagen ?  <Image src={documento?.imagen}/> : <img src={iconLibro} />
+            }
           </div>
           <div className="documento__header__title">
             <p>{documento?.tipo_data.tipo}</p>

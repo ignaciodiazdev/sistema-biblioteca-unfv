@@ -27,8 +27,9 @@ export const LoginForm = () => {
 
   return (
     <Container>
-      <form className="d-flex flex-column" onSubmit={onSubmit} autoComplete="on">
+      <form className="d-flex flex-column gap-4" onSubmit={onSubmit} autoComplete="on">
         <div className="group-input">
+          <label>Usuario</label>
           <input
             name="username"
             placeholder="Correo Electronico"
@@ -38,7 +39,6 @@ export const LoginForm = () => {
                 message: "El Correo es requerido",
               },
               pattern: {
-                // value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                 value: /^[0-9]{10}@unfv\.edu\.pe$/,
                 message: "Correo invalido",
               },
@@ -47,6 +47,7 @@ export const LoginForm = () => {
           {errors.username && <span>{errors.username.message}</span>}
         </div>
         <div className="group-input">
+          <label>Contraseña</label>
           <input
             type="password"
             name="password"
@@ -72,14 +73,24 @@ const Container = styled.div`
   form {
     .group-input{
       height: 70px;
+      span{
+        color: #ccc;
+      }
+    }
+    label{
+      font-family: 'Poppins', sans-serif !important;
+      font-size: 14px;
+      margin-bottom: 10px;
     }
     input {
       width: 100%;
+      background: #E0EEFF;
       padding: 0.5rem;
       border: 1px solid #ccc;
-      border-radius: 0.5rem;
+      border-radius: 4px;
       outline: none;
-      font-size: 1rem;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif !important;
     }
     span {
       font-size: 13px;
@@ -88,17 +99,18 @@ const Container = styled.div`
     button {
       width: 100%;
       padding: 0.5rem;
+      margin-top: 10px;
       border: none;
       border-radius: 0.5rem;
       outline: none;
       font-size: 1rem;
-      background-color: #343434;
+      background-color: #ff891c;
       color: #fff;
       cursor: pointer;
       transition: all 0.3s ease;
 
       &:hover {
-        background-color: #000000;
+        background-color: #fa7a02;
       }
     }
   }

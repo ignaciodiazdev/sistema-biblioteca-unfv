@@ -8,6 +8,7 @@ class TipoSerializer(ModelSerializer):
   class Meta:
     model = Tipo
     fields = '__all__'
+    ref_name = 'TipoDocumentos'
 
 class DocumentoSerializer(ModelSerializer):
   tipo_data = TipoSerializer(source='tipo', read_only=True)

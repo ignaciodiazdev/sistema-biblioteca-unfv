@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'escuelas',
     'bibliotecas',
     'inventarios',
+    'ponentes',
+    'actividades',
     'django_filters',
     # 'documentos_autores'
 ]
@@ -100,7 +102,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

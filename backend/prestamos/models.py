@@ -15,7 +15,7 @@ class Prestamo(models.Model):
     fecha_reserva = models.DateField(null=True)
     fecha_recojo = models.DateField(null=True)
     fecha_devolucion = models.DateField(null=True)
-    fecha_devolucion_confirmada = models.DateField(null=True)
+    fecha_devolucion_confirmada = models.DateField(null=True, blank=True)
     estado_prestamo = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='RESERVADO')
     inventario = models.ManyToManyField(Inventario)
     

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { Button, Image } from "antd";
 import { DeleteFilled } from "@ant-design/icons";
+import iconLibro from "../../assets/Client/libro-default.svg";
 
 export const CartDetail = ({
   imagen,
@@ -15,10 +16,9 @@ export const CartDetail = ({
     <Container>
       <div className="item">
         <div className="item__img">
-          <Image
-            src={imagen}
-            alt={titulo}
-          />
+          {
+            imagen ? <Image src={imagen} alt={titulo} /> : <img src={iconLibro} alt={titulo}/>
+          }
         </div>
         <div className="item__info">
           <h2>{titulo}</h2>

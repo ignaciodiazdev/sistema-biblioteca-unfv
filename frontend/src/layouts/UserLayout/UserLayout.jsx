@@ -26,7 +26,6 @@ import {
 export const UserLayout = ({ children }) => {
   const { theme, setTheme, auth } = useApp();
   const themeStyle = theme === "light" ? Light : Dark;
-  console.log(theme);
   setStorageTema(theme);
 
   const CambiarTheme = () => {
@@ -76,7 +75,7 @@ export const UserLayout = ({ children }) => {
                 toggleTheme={CambiarTheme}
               /> */}
               {auth?.me.is_staff ? null : <BtnCart />}
-              <Flotante />
+              {/* <Flotante /> */}
               <DropdownButton />
             </div>
           </Header>
@@ -146,8 +145,10 @@ const Container = styled.div`
   }
 
   .sidebar {
+    /* background-color: #282937; */
+    background-color: #4D44B5;
     color: #fff;
-    border-right: 1px solid #e4e4e4;
+    /* border-right: 1px solid #e4e4e4; */
     position: fixed;
     overflow-y: auto;
     top: 0;
@@ -161,6 +162,7 @@ const Container = styled.div`
     width: ${({ collapsed }) => (collapsed ? "80px" : "250px !important")};
   }
   .content {
+    background-color: #F3F4FF;
     min-height: 100vh;
     padding: 20px;
     padding-top: 90px;
@@ -195,6 +197,7 @@ const Container = styled.div`
     }
   }
   .logo-icon {
+    border: 3px solid #ffffff;
     width: 40px;
     height: 40px;
     display: flex;
@@ -206,8 +209,8 @@ const Container = styled.div`
     transition: all 0.4s ease;
   }
   .logo-icon-full {
-    width: 78px !important;
-    height: 78px !important;
+    width: 80px !important;
+    height: 80px !important;
   }
   .logo-name {
     height: 30px;

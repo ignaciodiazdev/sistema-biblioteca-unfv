@@ -7,6 +7,7 @@ from django.contrib.auth.hashers import make_password
 from users.models import User
 from users.api.serializers import UserSerializer
 
+
 class UserApiViewSet(ModelViewSet):
   permission_classes = [IsAuthenticatedOrReadOnly]
   serializer_class = UserSerializer
@@ -30,4 +31,3 @@ class UserView(APIView):
   def get(self, request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
-  

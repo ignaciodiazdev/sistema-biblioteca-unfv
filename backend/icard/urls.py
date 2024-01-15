@@ -31,6 +31,8 @@ from facultades.api.router import router_facultades
 from escuelas.api.router import router_escuelas
 from bibliotecas.api.router import router_bibliotecas
 from inventarios.api.router import router_inventarios
+from ponentes.api.router import router_ponentes
+from actividades.api.router import router_actividad
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -59,6 +61,8 @@ urlpatterns = [
     path('api/', include(router_escuelas.urls)),
     path('api/', include(router_bibliotecas.urls)),
     path('api/', include(router_inventarios.urls)),
+    path('api/', include(router_ponentes.urls)),
+    path('api/', include(router_actividad.urls)),
 ]
 
 # Agregamos las MEDIA a URLS

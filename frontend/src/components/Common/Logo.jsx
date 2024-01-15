@@ -20,10 +20,10 @@ export const Logo = ({ collapsed }) => {
           <p></p>
         ) : (
           <>
-            <p className="text-center">
+            <p className="text-center text-white">
               {first_name} {last_name}
             </p>
-            <p className="text-center small text-secondary">
+            <p className="text-center small text-white-50">
               {tipo_usuario_data?.tipo.toUpperCase()}
             </p>
           </>

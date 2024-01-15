@@ -1,12 +1,11 @@
 import { UserLayout } from "../layouts";
-import { Catalogo, Perfil, Prestamos, Reservas, Checkout } from '../pages/User'
-import { Catalogo2 } from "../pages/User/Catalogo2";
+import { Inicio, Catalogo2, Perfil, Prestamos, Reservas, Checkout } from '../pages/User'
 
 const routesUser = [
   {
     path: "/plataforma",
     layout: UserLayout,
-    page: Catalogo2,
+    page: Inicio,
   },
   {
     path: "/plataforma/perfil",
@@ -26,7 +25,7 @@ const routesUser = [
   {
     path: "/plataforma/catalogo",
     layout: UserLayout,
-    page: Catalogo,
+    page: Catalogo2,
   },
   {
     path: "/plataforma/checkout",

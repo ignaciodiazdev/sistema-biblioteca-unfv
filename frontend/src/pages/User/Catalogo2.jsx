@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import imgSearch from "../../assets/User/imgSearch.svg";
+// import imgSearch from "../../assets/User/buscar-libro.png";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import { useDocumentType } from "../../hooks";
@@ -60,9 +61,12 @@ export const Catalogo2 = () => {
   return (
     <Container>
       <section className="d-flex flex-column gap-4">
-        <h1 className="text-center">Catálogo Virtual</h1>
-        <div className="d-flex  flex-column gap-2">
-          <div className="d-flex flex-column flex-md-row gap-2">
+        <div className="catalogo-header">
+          <h1 className="text-center">Catálogo Virtual</h1>
+          <div className="fondo"></div>
+        </div>
+        <div className="d-flex flex-column gap-2">
+          <div className="d-flex flex-column flex-md-row gap-2 justify-content-center">
             <select onChange={(e) => setTipoSeleccionado(e.target.value)} className="px-2">
               <option value="">Todos los tipos</option>
               {
@@ -75,7 +79,7 @@ export const Catalogo2 = () => {
             </select>
             <input
               type="text"
-              className="px-2 w-50"
+              className="px-2 buscador"
               placeholder="Filtrar por título"
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
@@ -111,6 +115,33 @@ export const Catalogo2 = () => {
 };
 
 const Container = styled.div`
+  .catalogo-header{
+    background-image: url(https://scontent.flim38-1.fna.fbcdn.net/v/t39.30808-6/328529176_870778797465291_4738324445571878036_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeGBjOjS5k0bKtB71ibO_n2VIaInKORkJLEhoico5GQkseEOeLT2BdJI-7XgWHfBxUd8rtgFy4tTBGiErQTCEu31&_nc_ohc=VcEAfrQ4xysAX8B8oWQ&_nc_ht=scontent.flim38-1.fna&oh=00_AfBOpeB4fT2mALeBg225GHMbyuXDQGetEfD07AomSPk8Wg&oe=65AA0D52);
+    background-size: cover;
+    background-position: center;
+    /* background-position: 0% 45%; */
+    background-repeat: no-repeat;
+    padding: 50px 40px;
+    border-radius: 5px;
+    position: relative;
+    h1{
+      position: relative;
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 600;
+      z-index: 2;
+    }
+    .fondo{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background: #00000057;
+      z-index: 1;
+    }
+  }
   .lista-documentos {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -138,5 +169,11 @@ const Container = styled.div`
       font-size: 1.1rem;
       color: #848383;
     }
+  }
+  .buscador{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #848383;
   }
 `;

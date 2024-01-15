@@ -6,7 +6,6 @@ import {
   SettingOutlined,
   LogoutOutlined,
   BookOutlined,
-  BarsOutlined,
   FieldTimeOutlined,
   ProfileOutlined,
   UsergroupAddOutlined,
@@ -23,7 +22,12 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
     {
       key: "home",
       icon: <BookOutlined  />,
-      label: <Link to="/plataforma">Catálogo</Link>,
+      label: <Link to="/plataforma">Inicio</Link>,
+    },
+    {
+      key: "catalogo",
+      icon: <BookOutlined  />,
+      label: <Link to="/plataforma/catalogo">Catalogo</Link>,
     },
     {
       key: "perfil",
@@ -35,21 +39,6 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
       icon: <FieldTimeOutlined />,
       label: <Link to="/plataforma/reservas">Reservas</Link>,
     },
-    // {
-    //   key: "prestamos",
-    //   icon: <BarsOutlined />,
-    //   label: "Préstamos",
-    //   children: [
-    //     {
-    //       key: "prestados",
-    //       label: <Link to="/plataforma/prestamos">Prestados</Link>,
-    //     },
-    //     {
-    //       key: "rechazados",
-    //       label: "Rechazados",
-    //     },
-    //   ],
-    // },
     {
       key: "cerrar-sesion",
       icon: <LogoutOutlined />,
@@ -59,11 +48,6 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
         </Link>
       ),
     },
-    // {
-    //   key: "configuracion",
-    //   icon: <SettingOutlined />,
-    //   label: "Configuracion",
-    // },
   ];
   const itemsAdmin = [
     {
@@ -130,7 +114,7 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
   ];
   return (
     <Menu
-      theme={"light"}
+      theme={"dark"}
       mode="inline"
       className="menu-bar"
       style= {{fontSize: "14px"}}

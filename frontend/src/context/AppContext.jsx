@@ -22,9 +22,9 @@ export const AppProvider = ({children}) => {
   const [cart, setCart] = useState([]);
 
   const {getMe} = useUser();
-
   useEffect(() => {
     (async() => {
+      //Codigo para desloguear al usuario si el auth es null
       const token = getToken();
       if(token){
         const me = await getMe(token);
@@ -37,15 +37,13 @@ export const AppProvider = ({children}) => {
       }else{
         setAuth(null);
       }
-      // if(auth?.me?.code === 401){
-      //   logout();
-      // }
     })()
   }, [])
 
   const login = async (token) => {
     setToken(token)
     const me = await getMe(token);
+    console.log(me)
     setAuth({token, me})
   }
 
