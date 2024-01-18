@@ -12,21 +12,22 @@ import {
   AppstoreOutlined,
   ApartmentOutlined,
   AuditOutlined,
-  CarryOutOutlined
+  CarryOutOutlined,
 } from "@ant-design/icons";
 import { useApp } from "../../hooks";
 
 export const MenuList = ({ darkTheme, itemsUser }) => {
   const { logout, auth } = useApp();
+
   const itemsUsuario = [
     {
       key: "home",
-      icon: <BookOutlined  />,
-      label: <Link to="/plataforma">Inicio</Link>,
+      icon: <BookOutlined />,
+      label: <Link to="/plataforma/">Inicio</Link>,
     },
     {
       key: "catalogo",
-      icon: <BookOutlined  />,
+      icon: <BookOutlined />,
       label: <Link to="/plataforma/catalogo">Catalogo</Link>,
     },
     {
@@ -112,6 +113,7 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
       ),
     },
   ];
+
   return (
     <Menu
       theme={"dark"}
@@ -119,7 +121,7 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
       className="menu-bar"
       style= {{fontSize: "14px"}}
       items={auth.me.is_staff === true ? itemsAdmin : itemsUsuario}
-      defaultSelectedKeys={["home"]}
+      defaultSelectedKeys={"home"}
     ></Menu>
   );
 };

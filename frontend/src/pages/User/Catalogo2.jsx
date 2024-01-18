@@ -1,12 +1,16 @@
 import styled from "styled-components";
 import imgSearch from "../../assets/User/imgSearch.svg";
-// import imgSearch from "../../assets/User/buscar-libro.png";
+import { Collapse } from "antd";
 import { toast } from "react-toastify";
+import { VscSearch } from "react-icons/vsc";
 import { useEffect, useState } from "react";
 import { useDocumentType } from "../../hooks";
 import { Loading, NoResults } from "../../components/Common";
 import { DocumentosList } from "../../components/User";
 import { BASE_API } from "../../utils/constants";
+import { useApp } from "../../hooks";
+import { filtrarDocumentos } from "../../utils/filtroAvanzado";
+import { BusquedaAvanzadaDocs } from "../../components/User/Catalogo/BusquedaAvanzadaDocs";
 
 export const Catalogo2 = () => {
   const { documentType, getDocumentsType } = useDocumentType();
@@ -14,7 +18,12 @@ export const Catalogo2 = () => {
   const [tipoSeleccionado, setTipoSeleccionado] = useState("");
   const [titulo, setTitulo] = useState("");
   const [documentosFiltrados, setDocumentosFiltrados] = useState(null);
-  const [apiCalled, setApiCalled] = useState(false);
+  const [autor, setAutor] = useState("");
+  const [anio, setAnio] = useState("");
+  const [idioma, setIdioma] = useState("");
+  const [isbn, setIsbn] = useState("");
+  const [codigoBarras, setCodigoBarras] = useState("");
+  const { auth } = useApp();
 
   useEffect(() => {
     obtenerTipos();
@@ -25,33 +34,50 @@ export const Catalogo2 = () => {
   };
 
   const obtenerDocumentos = async () => {
+    const idBiblioteca = auth?.me?.biblioteca;
     try {
       setLoading(true);
-      const id = 1;
-      const url = `${BASE_API}/api/inventarios/?biblioteca=${id}`;
+      const url = `${BASE_API}/api/inventarios/?biblioteca=${idBiblioteca}`;
       const response = await fetch(url);
       const documentosData = await response.json();
 
-      const documentosFiltrados = documentosData.filter((documento) => {
-        const tipoValido = tipoSeleccionado === '' || documento.documento_data.tipo_data.tipo === tipoSeleccionado;
-        const tituloValido = titulo === '' || documento.documento_data.titulo.toLowerCase().includes(titulo.toLowerCase());
+      const documentosFiltrados = filtrarDocumentos(
+        documentosData,
+        tipoSeleccionado,
+        titulo,
+        autor,
+        anio,
+        idioma,
+        isbn,
+        codigoBarras
+      );
 
-        return tipoValido && tituloValido;
-      });
-      setApiCalled(true); // Marcar que la API ha sido llamada
       setTimeout(() => {
         setLoading(false);
         setDocumentosFiltrados(documentosFiltrados);
       }, 1200);
-
     } catch (error) {
       console.error("Error al obtener documentos:", error);
     }
   };
 
-  // Filtrar documentos cuando se hace clic en el botón
+  const existePalabraCampo = () => {
+    if (
+      titulo.trim().length > 0 ||
+      autor.trim().length > 0 ||
+      anio.trim().length > 0 ||
+      idioma.trim().length > 0 ||
+      isbn.trim().length > 0 ||
+      codigoBarras.trim().length > 0
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const handleFiltrarClick = () => {
-    if (titulo.trim().length > 0) {
+    if (existePalabraCampo()) {
       obtenerDocumentos();
     } else {
       toast.error("Ingrese un valor a buscar");
@@ -67,15 +93,16 @@ export const Catalogo2 = () => {
         </div>
         <div className="d-flex flex-column gap-2">
           <div className="d-flex flex-column flex-md-row gap-2 justify-content-center">
-            <select onChange={(e) => setTipoSeleccionado(e.target.value)} className="px-2">
+            <select
+              onChange={(e) => setTipoSeleccionado(e.target.value)}
+              className="px-2 form-select"
+            >
               <option value="">Todos los tipos</option>
-              {
-                documentType?.map((tipo) => (
-                  <option key={tipo.id} value={tipo.tipo}>
-                    {tipo.tipo}
-                  </option>
-                ))
-              }
+              {documentType?.map((tipo) => (
+                <option key={tipo.id} value={tipo.tipo}>
+                  {tipo.tipo}
+                </option>
+              ))}
             </select>
             <input
               type="text"
@@ -84,12 +111,33 @@ export const Catalogo2 = () => {
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
             />
-            <button 
-              className="btn btn-primary" 
-              onClick={handleFiltrarClick}
-            >
-              Filtrar
+            <button className="btn btn-primary btnFiltrar" onClick={handleFiltrarClick}>
+              <VscSearch /> Buscar 
             </button>
+          </div>
+          <div className="busqueda-avanzada">
+            <Collapse
+              items={[
+                {
+                  key: "1",
+                  label: "Búsqueda avanzada",
+                  children: (
+                    <BusquedaAvanzadaDocs
+                      autor={autor}
+                      setAutor={setAutor}
+                      anio={anio}
+                      setAnio={setAnio}
+                      idioma={idioma}
+                      setIdioma={setIdioma}
+                      isbn={isbn}
+                      setIsbn={setIsbn}
+                      codigoBarras={codigoBarras}
+                      setCodigoBarras={setCodigoBarras}
+                    />
+                  ),
+                },
+              ]}
+            />
           </div>
         </div>
         {documentosFiltrados?.length === 0 && loading !== true && <NoResults />}
@@ -104,8 +152,8 @@ export const Catalogo2 = () => {
             <Loading />
           </div>
         ) : (
-          <DocumentosList 
-            documentosFiltrados = {documentosFiltrados}             
+          <DocumentosList
+            documentosFiltrados={documentosFiltrados}
             catalogo={true}
           />
         )}
@@ -115,23 +163,23 @@ export const Catalogo2 = () => {
 };
 
 const Container = styled.div`
-  .catalogo-header{
-    background-image: url(https://scontent.flim38-1.fna.fbcdn.net/v/t39.30808-6/328529176_870778797465291_4738324445571878036_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=783fdb&_nc_eui2=AeGBjOjS5k0bKtB71ibO_n2VIaInKORkJLEhoico5GQkseEOeLT2BdJI-7XgWHfBxUd8rtgFy4tTBGiErQTCEu31&_nc_ohc=VcEAfrQ4xysAX8B8oWQ&_nc_ht=scontent.flim38-1.fna&oh=00_AfBOpeB4fT2mALeBg225GHMbyuXDQGetEfD07AomSPk8Wg&oe=65AA0D52);
+  .catalogo-header {
+    background-image: url(https://i.imgur.com/7hdP2YD.jpg);
     background-size: cover;
     background-position: center;
-    /* background-position: 0% 45%; */
     background-repeat: no-repeat;
-    padding: 50px 40px;
+    padding: 30px 40px;
     border-radius: 5px;
+    box-shadow: -1px 2px 9px 1px #0000006e;
     position: relative;
-    h1{
+    h1 {
       position: relative;
       color: #fff;
       font-size: 3rem;
       font-weight: 600;
       z-index: 2;
     }
-    .fondo{
+    .fondo {
       position: absolute;
       top: 0;
       left: 0;
@@ -170,10 +218,42 @@ const Container = styled.div`
       color: #848383;
     }
   }
-  .buscador{
+  .form-select{
+    font-size: 15px !important;
+    border:none;
+    padding: 10px 15px !important;
+    border-radius: 5px;
+    box-shadow: 0px 0px 2px 0px #0000006e;
+    @media screen and (min-width: 768px) {
+      width: 20%;
+      padding: 0 15px !important;
+    }
+  }
+  .buscador {
     width: 100%;
+    font-size: 15px;
+    color: #545454;
     height: 40px;
     border-radius: 5px;
-    border: 1px solid #848383;
+    padding: 10px 15px !important;
+    border:none;
+    box-shadow: 0px 0px 2px 0px #0000006e;
+    /* border: none; */
+  }
+  .buscador:focus {
+    outline: none;
+    /* box-shadow: 0px 0px 4px 0px #570dcc93; */
+    box-shadow: 0px 0px 4px 0px #d7750592;
+  }
+  .btnFiltrar{
+    font-size: 17px;
+    font-weight: 600;
+    @media screen and (min-width: 768px) {
+      width: 20%;
+    }
+    svg{
+      margin-right: 5px;
+
+    }
   }
 `;

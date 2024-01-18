@@ -5,10 +5,8 @@ import { Layout, Drawer } from "antd";
 import { useApp } from "../../hooks";
 import {
   DropdownButton,
-  Flotante,
   Logo,
   MenuList,
-  ToggleThemeButton,
 } from "../../components/Common";
 const { Header, Sider, Content } = Layout;
 import "./UserLayout.css";
@@ -75,7 +73,6 @@ export const UserLayout = ({ children }) => {
                 toggleTheme={CambiarTheme}
               /> */}
               {auth?.me.is_staff ? null : <BtnCart />}
-              {/* <Flotante /> */}
               <DropdownButton />
             </div>
           </Header>
@@ -103,7 +100,6 @@ export const UserLayout = ({ children }) => {
                 <MenuList theme="light" />
               </Sider>
             )}
-
             <Content className="content">{children}</Content>
           </Layout>
         </Layout>
@@ -146,7 +142,8 @@ const Container = styled.div`
 
   .sidebar {
     /* background-color: #282937; */
-    background-color: #4D44B5;
+    /* background-color: #4D44B5; */
+    background-color: #374cb4;
     color: #fff;
     /* border-right: 1px solid #e4e4e4; */
     position: fixed;

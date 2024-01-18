@@ -13,10 +13,10 @@ import iconUsuario from "../../assets/login/icon-usuario.png";
 
 export const DropdownButton = () => {
   const { logout, auth } = useApp();
-  const {first_name, last_name, image, tipo_usuario} = auth.me;
+  const {first_name, last_name, image} = auth.me;
   const items = [
     {
-      label: "Carrito",
+      label: <Link to={"/plataforma"}>Inicio</Link>,
       icon: <ShoppingCartOutlined />,
       key: "0",
     },
@@ -32,13 +32,21 @@ export const DropdownButton = () => {
       type: "divider",
     },
     {
+      label: <Link to={"/plataforma/reservas"}>Reservas</Link>,
+      icon: <UserOutlined />,
+      key: "2",
+    },
+    {
+      type: "divider",
+    },
+    {
       label: (
         <Link onClick={logout} to={"/login"}>
           Cerrar Sesión
         </Link>
       ),
       icon: <LogoutOutlined />,
-      key: "2",
+      key: "3",
     },
   ];
   const isMobile = useMediaQuery({ maxWidth: 576 });

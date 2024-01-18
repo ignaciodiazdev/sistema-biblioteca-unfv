@@ -34,4 +34,4 @@ class ActividadViewSet(ModelViewSet):
   queryset = Actividad.objects.all()
   filter_backends = [DjangoFilterBackend, OrderingFilter]
   filterset_fields = {'nombre' : ['icontains'], 'tipo' : ['exact'], 'id': ['exact'], 'estado' : ['exact']}
-  ordering_fields = '__all__'
+  ordering = ['fecha'] 

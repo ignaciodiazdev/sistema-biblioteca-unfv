@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { getPrestamosIdUserApi, postPrestamosApi } from "../api/prestamos";
 import { useApp } from '.'
-import { toast } from 'react-toastify'
+
 export function usePrestamos() {
   const [prestamos, setPrestamos] = useState(null);
   const [loading, setLoading] = useState(null);

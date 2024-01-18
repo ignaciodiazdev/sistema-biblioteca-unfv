@@ -16,4 +16,24 @@ export const BtnCart = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  .ant-btn{
+    background: transparent;
+    margin-top: 10px;
+    font-size: 26px;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    svg{
+      color: #fff;
+      transition: all 0.3s ease-in-out;
+    }
+  }
+  .ant-btn:hover{
+    background: transparent !important;
+    border: none  !important;
+    svg{
+      scale: 1.2;
+    }
+  }
+`;
