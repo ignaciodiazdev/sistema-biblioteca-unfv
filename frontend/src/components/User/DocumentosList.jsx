@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { DocumentoCard } from "./";
 
 export const DocumentosList = ({documentosFiltrados, catalogo}) => {
-  console.log(documentosFiltrados)
   return (
     <Container className="lista-documentos">
       {

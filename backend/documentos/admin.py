@@ -8,4 +8,4 @@ class TipoAdmin(admin.ModelAdmin):
 
 @admin.register(Documento)
 class DocumentoAdmin(admin.ModelAdmin):
-  pass
+    search_fields = ['titulo']

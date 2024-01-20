@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";;
 import { LoginForm } from "../../components/Common";
 import { useApp } from "../../hooks";
 import loginSVG from "../../assets/login/buho.png";
-// import loginWallp from "../../assets/login/wallpaper.jpg";
-// import loginWallp from "../../assets/login/biblioteca.jpg";
 import loginWallp from "../../assets/login/unfv.jpg";
 import loginFB from "../../assets/login/facebook.png";
 import loginIG from "../../assets/login/instagram.webp";
@@ -38,7 +36,7 @@ export const Login = () => {
             {!auth ? <LoginForm /> : null}
           </div>
           <div className="login__content__registrarse">
-            <p>¿No tienes una cuenta? <a href="https://www.unfv.edu.pe/" target="_blank" rel="noreferrer">Regístrate</a></p>
+            <p>¿Cómo usar la Plataforma? <a href="https://drive.google.com/file/d/1cT1b76aTujjDJ6TP14-HnASMljigdotO/view?usp=sharing" target="_blank" rel="noreferrer">Ver Manual</a></p>
           </div>
           <div className="line-with-text">
             <hr />

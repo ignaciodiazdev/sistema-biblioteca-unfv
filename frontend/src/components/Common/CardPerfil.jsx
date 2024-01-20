@@ -8,8 +8,6 @@ import { ActualizarFoto } from "../User";
 
 export const CardPerfil = ({ padding }) => {
   const { auth } = useApp();
-
-  console.log(auth.me);
   return (
     <Container className="section-perfil" padding={padding}>
       <div className="banner">
@@ -68,10 +66,8 @@ export const CardPerfil = ({ padding }) => {
 };
 
 const Container = styled.div`
-  background: rgb(255, 255, 255); // Light*/
-  border: 1px solid #e4e4e4; //Light
-  /* color: #b1b1b1;
-  background: #191c24 !important; */
+  background: rgb(255, 255, 255);
+  border: 1px solid #e4e4e4; 
   backdrop-filter: blur(10px);
   overflow: hidden;
   border-radius: 10px;
@@ -92,9 +88,6 @@ const Container = styled.div`
       gap: 1.5rem;
       padding: ${({ padding }) => padding};
       position: relative;
-      @media screen and (min-width: 768px) {
-        /* flex-direction: row; */
-      }
       &__foto {
         position: absolute;
         top: -90px;

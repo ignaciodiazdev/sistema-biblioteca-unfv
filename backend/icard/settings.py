@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'icard.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'biblioteca_unfv',
+        'NAME': 'biblioteca_virtual_unfv',
         'USER': 'root',
         'PASSWORD': 'admin',
         'HOST': 'localhost',

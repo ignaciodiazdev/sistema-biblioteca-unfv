@@ -14,4 +14,4 @@ class Inventario(models.Model):
     db_table = 'inventarios'
 
   def __str__(self):
-    return self.biblioteca.nombre + ' - ' + self.documento.titulo
+    return self.documento.cod_barras + ' - ' + self.documento.titulo

@@ -43,7 +43,6 @@ export const AppProvider = ({children}) => {
   const login = async (token) => {
     setToken(token)
     const me = await getMe(token);
-    console.log(me)
     setAuth({token, me})
   }
 
@@ -61,7 +60,6 @@ export const AppProvider = ({children}) => {
     if (auth.me.tipo_usuario_data.id === 2) maximo = 2 
     else maximo = 3;
 
-    console.log(maximo)
     const productExist = cart.find(item => item.id === product.id);
     if(cart.length === maximo ){
       return `No puedes agregar más de ${maximo} documentos al carrito`
