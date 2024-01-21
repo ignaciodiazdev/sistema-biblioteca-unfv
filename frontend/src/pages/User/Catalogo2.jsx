@@ -238,11 +238,9 @@ const Container = styled.div`
     padding: 10px 15px !important;
     border:none;
     box-shadow: 0px 0px 2px 0px #0000006e;
-    /* border: none; */
   }
   .buscador:focus {
     outline: none;
-    /* box-shadow: 0px 0px 4px 0px #570dcc93; */
     box-shadow: 0px 0px 4px 0px #d7750592;
   }
   .btnFiltrar{

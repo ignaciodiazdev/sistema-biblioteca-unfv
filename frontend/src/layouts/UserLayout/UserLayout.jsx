@@ -141,11 +141,8 @@ const Container = styled.div`
   }
 
   .sidebar {
-    /* background-color: #282937; */
-    /* background-color: #4D44B5; */
     background-color: #374cb4;
     color: #fff;
-    /* border-right: 1px solid #e4e4e4; */
     position: fixed;
     overflow-y: auto;
     top: 0;

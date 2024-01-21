@@ -2,7 +2,7 @@ from django.db import models
 from datetime import timedelta, date
 from users.models import User
 from inventarios.models import Inventario
-# Create your models here.
+
 class Prestamo(models.Model):
     ESTADO_CHOICES = [
         ('RESERVADO', 'Reservado'),

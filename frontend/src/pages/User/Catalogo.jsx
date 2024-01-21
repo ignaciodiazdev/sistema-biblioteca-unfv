@@ -32,8 +32,6 @@ export const Catalogo = () => {
     <Container>
         <section className=" d-flex flex-column gap-4">
           <h1 className="text-center">Catálogo Virtual</h1>
-          {/* <DrawerForm /> */}
-          {/* <DrawerRight /> */}
           <Buscador
             {...{
               searchType,
