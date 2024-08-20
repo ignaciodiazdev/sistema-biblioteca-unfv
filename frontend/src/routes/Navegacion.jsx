@@ -55,7 +55,7 @@ export const Navegacion = () => {
             />
           </Route>
         ))}
-        
+
         <Route
           path="*"
           element={

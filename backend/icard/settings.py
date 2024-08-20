@@ -123,7 +123,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
@@ -159,5 +158,5 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 SIMPLE_JWT = {
-  'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
+    'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }

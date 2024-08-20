@@ -10,4 +10,4 @@ export const getActividadesApi = async () => {
   } catch (error) {
     throw error;
   }
-}
+};

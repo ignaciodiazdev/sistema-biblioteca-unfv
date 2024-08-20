@@ -14,7 +14,6 @@ export function useActividad() {
       setActividades(response);
 
       return response;
-
     } catch (error) {
       setLoading(false);
       setError(error);

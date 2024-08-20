@@ -16,7 +16,7 @@ export const LoginForm = () => {
     console.log(data);
     try {
       const response = await loginApi(data);
-      console.log(response)
+      console.log(response);
       const { access } = response;
       console.log(access);
       login(access);
@@ -27,7 +27,11 @@ export const LoginForm = () => {
 
   return (
     <Container>
-      <form className="d-flex flex-column gap-4" onSubmit={onSubmit} autoComplete="on">
+      <form
+        className="d-flex flex-column gap-4"
+        onSubmit={onSubmit}
+        autoComplete="on"
+      >
         <div className="group-input">
           <label>Usuario</label>
           <input
@@ -60,7 +64,6 @@ export const LoginForm = () => {
             })}
           />
           {errors.password && <span>{errors.password.message}</span>}
-
         </div>
         <button type="submit">Iniciar Sesión</button>
       </form>
@@ -71,26 +74,26 @@ export const LoginForm = () => {
 const Container = styled.div`
   width: 100%;
   form {
-    .group-input{
+    .group-input {
       height: 70px;
-      span{
+      span {
         color: #ccc;
       }
     }
-    label{
-      font-family: 'Poppins', sans-serif !important;
+    label {
+      font-family: "Poppins", sans-serif !important;
       font-size: 14px;
       margin-bottom: 10px;
     }
     input {
       width: 100%;
-      background: #E0EEFF;
+      background: #e0eeff;
       padding: 0.5rem;
       border: 1px solid #ccc;
       border-radius: 4px;
       outline: none;
       font-size: 14px;
-      font-family: 'Poppins', sans-serif !important;
+      font-family: "Poppins", sans-serif !important;
     }
     span {
       font-size: 13px;

@@ -1,5 +1,5 @@
 import { AdminLayout } from "../layouts";
-import {UserLayout} from '../layouts'
+import { UserLayout } from "../layouts";
 import {
   Autores,
   Categorias,
@@ -10,8 +10,7 @@ import {
   Reservas,
   Usuarios,
 } from "../pages/Admin";
-import {Perfil} from '../pages/User'
-
+import { Perfil } from "../pages/User";
 
 const routesAdmin = [
   {
@@ -58,7 +57,7 @@ const routesAdmin = [
     path: "/admin/perfil",
     layout: UserLayout,
     page: Perfil,
-  }
-]
+  },
+];
 
 export default routesAdmin;

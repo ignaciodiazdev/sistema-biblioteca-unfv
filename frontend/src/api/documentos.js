@@ -22,4 +22,4 @@ export const getDocumentByIdApi = async (id) => {
   } catch (error) {
     throw error;
   }
-}
+};

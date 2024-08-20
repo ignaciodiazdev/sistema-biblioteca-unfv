@@ -40,6 +40,6 @@ export function useDocument() {
     documents,
     error,
     getDocuments,
-    getDocumentById
+    getDocumentById,
   };
 }

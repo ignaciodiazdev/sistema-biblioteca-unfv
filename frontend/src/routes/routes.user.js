@@ -1,5 +1,12 @@
 import { UserLayout } from "../layouts";
-import { Inicio, Catalogo2, Perfil, Prestamos, Reservas, Checkout } from '../pages/User'
+import {
+  Inicio,
+  Catalogo2,
+  Perfil,
+  Prestamos,
+  Reservas,
+  Checkout,
+} from "../pages/User";
 
 const routesUser = [
   {
