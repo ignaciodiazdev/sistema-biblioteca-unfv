@@ -111,8 +111,11 @@ export const Catalogo2 = () => {
               value={titulo}
               onChange={(e) => setTitulo(e.target.value)}
             />
-            <button className="btn btn-primary btnFiltrar" onClick={handleFiltrarClick}>
-              <VscSearch /> Buscar 
+            <button
+              className="btn btn-primary btnFiltrar"
+              onClick={handleFiltrarClick}
+            >
+              <VscSearch /> Buscar
             </button>
           </div>
           <div className="busqueda-avanzada">
@@ -209,6 +212,7 @@ const Container = styled.div`
     justify-content: center;
     align-items: center;
     padding-top: 2.5rem;
+    text-align: center;
     img {
       width: 240px;
       height: 240px;
@@ -218,9 +222,9 @@ const Container = styled.div`
       color: #848383;
     }
   }
-  .form-select{
+  .form-select {
     font-size: 15px !important;
-    border:none;
+    border: none;
     padding: 10px 15px !important;
     border-radius: 5px;
     box-shadow: 0px 0px 2px 0px #0000006e;
@@ -236,22 +240,21 @@ const Container = styled.div`
     height: 40px;
     border-radius: 5px;
     padding: 10px 15px !important;
-    border:none;
+    border: none;
     box-shadow: 0px 0px 2px 0px #0000006e;
   }
   .buscador:focus {
     outline: none;
     box-shadow: 0px 0px 4px 0px #d7750592;
   }
-  .btnFiltrar{
+  .btnFiltrar {
     font-size: 17px;
     font-weight: 600;
     @media screen and (min-width: 768px) {
       width: 20%;
     }
-    svg{
+    svg {
       margin-right: 5px;
-
     }
   }
 `;

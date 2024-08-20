@@ -84,9 +84,13 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding: 0 50px;
-
+  padding: 10px;
+  @media screen and (min-width: 1024px) {
+    padding: 0 50px;
+  }
+  @media screen and (min-width: 1024px) {
+    height: 100vh;
+  }
   .login {
     height: 90%;
     display: flex;

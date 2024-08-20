@@ -3,11 +3,7 @@ import { useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import { Layout, Drawer } from "antd";
 import { useApp } from "../../hooks";
-import {
-  DropdownButton,
-  Logo,
-  MenuList,
-} from "../../components/Common";
+import { DropdownButton, Logo, MenuList } from "../../components/Common";
 const { Header, Sider, Content } = Layout;
 import "./UserLayout.css";
 
@@ -156,14 +152,16 @@ const Container = styled.div`
     width: ${({ collapsed }) => (collapsed ? "80px" : "250px !important")};
   }
   .content {
-    background-color: #F3F4FF;
+    background-color: #f3f4ff;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
     padding-top: 90px;
     position: relative;
     transition: all 0.3s ease;
     @media screen and (min-width: 992px) {
       left: ${({ collapsed }) => (collapsed ? "80px" : "250px !important")};
+      padding: 20px;
+      padding-top: 90px;
     }
     > div {
       @media screen and (min-width: 992px) {

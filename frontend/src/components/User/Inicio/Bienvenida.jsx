@@ -31,12 +31,12 @@ export const Bienvenida = () => {
         </div>
       </section>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   h1 {
-    font-size: 50px;
+    font-size: 38px;
     font-weight: 700;
     color: #ffffffd4;
   }
@@ -87,7 +87,7 @@ const Container = styled.div`
       display: flex;
       justify-content: center;
       align-items: end;
-      img{
+      img {
         width: 100%;
       }
     }

@@ -42,3 +42,16 @@ a{
 .ant-dropdown{
   inset: 64.8px 20px auto auto !important;
 }
+.ant-drawer-body{
+  background-color: #001529;
+}
+.ant-drawer-header{
+  background-color: #001529;
+}
+.ant-drawer-title{
+  color: #fff !important;
+
+}
+.anticon-close{
+  color: #fff !important;
+}
