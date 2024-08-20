@@ -21,7 +21,7 @@ SECRET_KEY = 'django-insecure-0z9h_=b*o&xvfk%v9=i00@-5!bg*#^+983qpo3j786!d^2%!f2
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', "localhost",
-                 "web-production-2a48.up.railway.app"]
+                 "web-production-2a48.up.railway.app", 'sistema-biblioteca-unfv.vercel.app']
 
 
 # Application definition
