@@ -1,1 +1,1 @@
-web: cd backend && gunicorn icard.wsgi --log-file -
+web: cd backend && python manage.py collectstatic && gunicorn icard.wsgi --log-file -
