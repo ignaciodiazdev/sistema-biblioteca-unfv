@@ -1,0 +1,1 @@
+web: cd backend && gunicorn icard.wsgi --log-file -
