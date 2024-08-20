@@ -50,7 +50,7 @@ export const Navigation = () => {
                     Inicio
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     to={"/catalogo"}
                     className={`nav-link px-md-3 ${
@@ -79,62 +79,9 @@ export const Navigation = () => {
                   >
                     Servicios
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
-                  {/* {auth ? (
-                    <div className="dropdown">
-                      <a
-                        className="nav-link dropdown-toggle"
-                        href=""
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <img src={iconUsuario} alt="icono de usuario" />
-                        <span>{auth.me.first_name}</span>
-                      </a>
-
-                      <ul className="dropdown-menu">
-                        <li>
-                          <Link className="dropdown-item" to={"/perfil"}>
-                            Mi perfil
-                          </Link>
-                        </li>
-                        <li>
-                          <Link className="dropdown-item" to={"/reservas"}>
-                            Mis Reservas
-                          </Link>
-                        </li>
-                        <li>
-                          <Link className="dropdown-item" to={"/prestamos"}>
-                            Mis Préstamos
-                          </Link>
-                        </li>
-                        <li>
-                          <Link className="dropdown-item" onClick={logout} to={"/"}>
-                            Cerrar Sesión
-                          </Link>
-                        </li>
-                      </ul>
-                    </div>
-                  ) : (
-                    <Link
-                      // type="button"
-                      className="nav-link px-md-3"
-                      // data-bs-toggle="modal"
-                      // data-bs-target="#exampleModal"
-                      to={"/login"}
-                    >
-                      Plataforma
-                    </Link>
-                  )} */}
-                  <Link
-                    // type="button"
-                    className="nav-link px-md-3"
-                    // data-bs-toggle="modal"
-                    // data-bs-target="#exampleModal"
-                    to={"/login"}
-                  >
+                  <Link className="nav-link px-md-3" to={"/login"}>
                     Plataforma
                   </Link>
                 </li>

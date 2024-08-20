@@ -1,16 +1,17 @@
 import styled from "styled-components";
-import {Image} from 'antd'
+import { Image } from "antd";
 import iconLibro from "../../assets/Client/libro-default.svg";
-export const DocumentoDetalle = ({documento}) => {
+export const DocumentoDetalle = ({ documento }) => {
   return (
     <Container>
       <div className="documento">
         <div className="documento__header">
           <div className="documento__header__imagen">
-            {/* <Image src={documento?.imagen} alt="" className="" /> */}
-            {
-              documento?.imagen ?  <Image src={documento?.imagen}/> : <img src={iconLibro} />
-            }
+            {documento?.imagen ? (
+              <Image src={documento?.imagen} />
+            ) : (
+              <img src={iconLibro} />
+            )}
           </div>
           <div className="documento__header__title">
             <p>{documento?.tipo_data.tipo}</p>
@@ -55,46 +56,46 @@ export const DocumentoDetalle = ({documento}) => {
 };
 
 const Container = styled.div`
-.documento{
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  &__header{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 20px;
-    &__imagen{
-      img{
-        width: 80px;
-        height: 90px;
-        border: 1px solid #dedede;
-      }
-    }
-    &__title{
-      & > :first-child{
-        color: #767676;
-      }
-      font-weight: bold;
-    }
-  }
-  &__body{
+  .documento {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    hr{
-      margin: 0;
+    gap: 2rem;
+    &__header {
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      gap: 20px;
+      &__imagen {
+        img {
+          width: 80px;
+          height: 90px;
+          border: 1px solid #dedede;
+        }
+      }
+      &__title {
+        & > :first-child {
+          color: #767676;
+        }
+        font-weight: bold;
+      }
     }
-    &__detalle{
-      &__item{
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        gap: 20px;
-        padding: 5px 0;
-        & > :first-child{
-          font-weight: 500;
+    &__body {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      hr {
+        margin: 0;
+      }
+      &__detalle {
+        &__item {
+          display: grid;
+          grid-template-columns: 1fr 3fr;
+          gap: 20px;
+          padding: 5px 0;
+          & > :first-child {
+            font-weight: 500;
+          }
         }
       }
     }
   }
-}
 `;
