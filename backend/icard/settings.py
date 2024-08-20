@@ -170,3 +170,5 @@ CORS_ALLOW_CREDENTIALS = True
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': datetime.timedelta(days=120)
 }
+CSRF_TRUSTED_ORIGINS = ['http://*',
+                        'https://web-production-2a48.up.railway.app']
