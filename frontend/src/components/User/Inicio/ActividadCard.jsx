@@ -1,9 +1,21 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {Image, Tag} from 'antd'
+import { Image, Tag } from "antd";
 
-export const ActividadCard = ({nombre, descripcion, fecha, hora, imagen, enlace, lugar, correo, tipo_data, modalidad_data, estado_data, ponente_data}) => {
-
+export const ActividadCard = ({
+  nombre,
+  descripcion,
+  fecha,
+  hora,
+  imagen,
+  enlace,
+  lugar,
+  correo,
+  tipo_data,
+  modalidad_data,
+  estado_data,
+  ponente_data,
+}) => {
   let isVirtual = true;
   let isEnVivo = false;
   if (modalidad_data.nombre === "Presencial") {
@@ -15,107 +27,92 @@ export const ActividadCard = ({nombre, descripcion, fecha, hora, imagen, enlace,
 
   return (
     <Container>
-        <div className="card" style={{ borderRadius: "13px", overflow: "hidden"}}>
-          <Image src={imagen} className="card-img-top" alt="..." />
-          <div className="card-body">
-            <h5 className="card-title">
-              {nombre}
-            </h5>
-            <div className="tag">
-              <div className="tag__modalidad">
-                <Tag color="green" style={{margin: "10px 10px 10px 0px"}}>
-                  {modalidad_data.nombre}
-                </Tag>
-                <Tag color="purple" style={{margin: "10px 10px 10px 0px"}}>
-                  {lugar}
-                </Tag>
+      <div
+        className="card"
+        style={{ borderRadius: "13px", overflow: "hidden" }}
+      >
+        <Image src={imagen} className="card-img-top" alt="..." />
+        <div className="card-body">
+          <h5 className="card-title">{nombre}</h5>
+          <div className="tag">
+            <div className="tag__modalidad">
+              <Tag color="green" style={{ margin: "10px 10px 10px 0px" }}>
+                {modalidad_data.nombre}
+              </Tag>
+              <Tag color="purple" style={{ margin: "10px 10px 10px 0px" }}>
+                {lugar}
+              </Tag>
+            </div>
+            {isEnVivo ? (
+              <div className="en-vivo">
+                <p>
+                  <b>🔴</b>
+                  <span>En Vivo</span>
+                </p>
               </div>
-              {
-                isEnVivo ? (
-                  <div className="en-vivo">
-                    <p><b>🔴</b><span>En Vivo</span></p>
-                  </div>
-                ) : (
-                  null
-                )
-              }
-            </div>
-            <p className="card-descripcion">
-              {"¡Te esperamos! 😎. 📢 " + descripcion}
+            ) : null}
+          </div>
+          <p className="card-descripcion">
+            {"¡Te esperamos! 😎. 📢 " + descripcion}
+          </p>
+          <hr />
+          <div className="card-detalle">
+            <p className="card-detalle-campo">
+              <b>📅 Fecha:</b> <span>{fecha}</span>
             </p>
-            <hr />
-            <div className="card-detalle">
+            <p className="card-detalle-campo">
+              <b>⌚ Hora:</b> <span>{hora}</span>
+            </p>
+            {isVirtual ? (
               <p className="card-detalle-campo">
-                <b>📅 Fecha:</b> <span>{fecha}</span>
+                <b>🎥 App:</b> <span>{lugar}</span>
               </p>
+            ) : (
               <p className="card-detalle-campo">
-                <b>⌚ Hora:</b> <span>{hora}</span>
+                <b>🏠 Lugar:</b> <span>{lugar}</span>
               </p>
-              {
-                isVirtual ? (
-                  <p className="card-detalle-campo">
-                    <b>🎥 App:</b> <span>{lugar}</span>
-                  </p>
-                ):(
-                  <p className="card-detalle-campo">
-                    <b>🏠 Lugar:</b> <span>{lugar}</span>
-                  </p>
-                )
-                  
-              }
-              <p className="card-detalle-campo">
-                <b>📩 Email:</b> <span>{correo}</span>
-              </p>
-            </div>
-            <hr />
-            <div className="lista-ponentes">
-              {
-                ponente_data.map((ponente) => {
-                  return (
-                    <div className="ponente" key={ponente.id}>
-                      <div className="ponente__contenedorImg">
-                        <Image src={ponente.foto} />
-                      </div>
-                      <div className="ponente__datos">
-                        <p className="nombre">{ponente.nombre}</p>
-                        <p className="profesion">{ponente.profesion}</p>
-                      </div>
-                      <div className="ponente__cargo">
-                        <p>Ponente</p>
-                      </div>
-                    </div>
-                  )
-                })
-              }
-            </div>            
-            <br/>
-            <div className="botones">
-              {
-                isVirtual ? (
-                  <Link 
-                  to={enlace} 
-                  target="_blank"
-                  className="boton-actividad"
-                  >
-                    Unirme
-                  </Link>
-                )
-                : (
-                  <p className="boton-presencial"
-                  >
-                    Actividad Presencial
-                  </p>
-                )
-              }
-            </div>
+            )}
+            <p className="card-detalle-campo">
+              <b>📩 Email:</b> <span>{correo}</span>
+            </p>
+          </div>
+          <hr />
+          <div className="lista-ponentes">
+            {ponente_data.map((ponente) => {
+              return (
+                <div className="ponente" key={ponente.id}>
+                  <div className="ponente__contenedorImg">
+                    <Image src={ponente.foto} />
+                  </div>
+                  <div className="ponente__datos">
+                    <p className="nombre">{ponente.nombre}</p>
+                    <p className="profesion">{ponente.profesion}</p>
+                  </div>
+                  <div className="ponente__cargo">
+                    <p>Ponente</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <br />
+          <div className="botones">
+            {isVirtual ? (
+              <Link to={enlace} target="_blank" className="boton-actividad">
+                Unirme
+              </Link>
+            ) : (
+              <p className="boton-presencial">Actividad Presencial</p>
+            )}
           </div>
         </div>
+      </div>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
-  .boton-presencial{
+  .boton-presencial {
     background: #fdefd9;
     padding: 6px;
     border: 1px dashed orange;
@@ -126,78 +123,78 @@ const Container = styled.div`
     width: 100%;
     text-align: center;
   }
-  .card{
+  .card {
     height: 100%;
     border: none;
     box-shadow: 0px 0px 5px 0px #00000040;
-    .card-img-top{
+    .card-img-top {
       height: 200px;
       object-fit: cover;
     }
-    .card-detalle{
+    .card-detalle {
       display: flex;
       flex-direction: column;
       row-gap: 5px;
-      b{
+      b {
         width: 80px;
       }
-      .card-detalle-campo{
+      .card-detalle-campo {
         display: flex;
         gap: 10px;
       }
     }
-    .card-descripcion{
-      @media screen and (min-width: 1024px){
+    .card-descripcion {
+      @media screen and (min-width: 1024px) {
         min-height: 100px;
       }
     }
   }
-  .tag{
+  .tag {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .lista-ponentes{
+  .lista-ponentes {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 10px;
-    @media screen and (min-width: 1024px){
+    @media screen and (min-width: 1024px) {
       min-height: 90px;
     }
   }
-  .ponente{
+  .ponente {
     display: flex;
     gap: 10px;
-    &__contenedorImg{
+    &__contenedorImg {
       width: 40px;
       height: 40px;
       border-radius: 50%;
       overflow: hidden;
-      img{
+      img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
     }
-    &__datos{
-      .nombre{
+    &__datos {
+      .nombre {
         font-weight: 500;
         width: 200px;
       }
-      .profesion{
+      .profesion {
         color: #727272;
         font-size: 12px;
       }
     }
-    &__cargo{
+    &__cargo {
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto;
       padding: 0 15px;
       font-size: 12px;
-      p{
+      p {
         background: #f4ffca;
         color: #839400;
         padding: 2px;
@@ -208,31 +205,31 @@ const Container = styled.div`
       }
     }
   }
-  .botones{
+  .botones {
     display: flex;
   }
-  .boton-actividad{
-      background: #6559e4;
-      border: none;
-      padding: 5px 10px;
-      color: #ffffff;
-      font-size: 15px;
-      border-radius: 20px;
-      width: 100%;
-      min-height: 30px;
-      text-align: center;
-      font-weight: 500;
-      transition: all 0.3s ease;
+  .boton-actividad {
+    background: #6559e4;
+    border: none;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 15px;
+    border-radius: 20px;
+    width: 100%;
+    min-height: 30px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.3s ease;
   }
-  .boton-actividad:hover{
-      background: #554bc7 ;
-      box-shadow: 0px 0px 5px 0px #6f13b0;
-      color: #ffffff;
+  .boton-actividad:hover {
+    background: #554bc7;
+    box-shadow: 0px 0px 5px 0px #6f13b0;
+    color: #ffffff;
   }
   .en-vivo {
     position: relative;
   }
-  .en-vivo b{
+  .en-vivo b {
     padding-left: 2px;
     font-size: 12px;
   }
