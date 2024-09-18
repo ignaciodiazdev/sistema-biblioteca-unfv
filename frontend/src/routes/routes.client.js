@@ -1,9 +1,5 @@
 import { ClientLayout } from "../layouts";
-import {
-  Inicio,
-  Catalogo,
-  DocumentoDetalle,
-} from "../pages/Client";
+import { Inicio, Catalogo, DocumentoDetalle } from "../pages/Client";
 
 const routesClient = [
   {
@@ -20,7 +16,7 @@ const routesClient = [
     path: "/catalogo/documento/:id",
     layout: ClientLayout,
     page: DocumentoDetalle,
-  }
+  },
 ];
 
 export default routesClient;

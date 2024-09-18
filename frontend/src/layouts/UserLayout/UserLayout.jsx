@@ -114,20 +114,10 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #e4e4e4;
     background: #ffffff;
     padding: 30px 0;
     padding-right: 30px !important;
-    background: linear-gradient(
-      120deg,
-      rgb(235 86 86) 0%,
-      rgb(255 130 60) 18%,
-      rgb(251 92 67) 42%,
-      rgb(239 110 101) 61%,
-      rgb(232 88 92) 78%,
-      rgb(223 77 97) 89%,
-      rgb(213 57 90) 100%
-    );
+    background-color: #374cb4;
     &__right {
       display: flex;
       align-items: center;
@@ -137,7 +127,7 @@ const Container = styled.div`
   }
 
   .sidebar {
-    background-color: #374cb4;
+    background-color: #3c4398;
     color: #fff;
     position: fixed;
     overflow-y: auto;

@@ -47,7 +47,7 @@ const Container = styled.div`
     background-image: linear-gradient(
         294deg,
         rgba(33, 37, 41, 0.01),
-        #0b5096 85%
+        #da2543 85%
       ),
       radial-gradient(
         ellipse at top left,

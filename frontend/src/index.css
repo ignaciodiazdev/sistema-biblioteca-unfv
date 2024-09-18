@@ -36,22 +36,15 @@ a{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4D44B5;
+  background: #9b9ba2;
   border-radius: 50px;
 }
 .ant-dropdown{
   inset: 64.8px 20px auto auto !important;
 }
-.ant-drawer-body{
-  background-color: #001529;
-}
-.ant-drawer-header{
-  background-color: #001529;
-}
-.ant-drawer-title{
-  color: #fff !important;
-
-}
-.anticon-close{
-  color: #fff !important;
+@media screen and (max-width: 992px) {
+  .ant-menu{
+    background-color: white;
+    color: black;
+  }
 }

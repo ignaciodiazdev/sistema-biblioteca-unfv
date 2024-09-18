@@ -2,8 +2,9 @@ import styled from "styled-components";
 import {
   UserOutlined,
   LogoutOutlined,
-  ShoppingCartOutlined,
+  HomeOutlined,
   CaretDownOutlined,
+  FieldTimeOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Space } from "antd";
 import { Link } from "react-router-dom";
@@ -13,11 +14,11 @@ import iconUsuario from "../../assets/login/icon-usuario.png";
 
 export const DropdownButton = () => {
   const { logout, auth } = useApp();
-  const {first_name, last_name, image} = auth.me;
+  const { first_name, last_name, image } = auth.me;
   const items = [
     {
       label: <Link to={"/plataforma"}>Inicio</Link>,
-      icon: <ShoppingCartOutlined />,
+      icon: <HomeOutlined />,
       key: "0",
     },
     {
@@ -33,7 +34,7 @@ export const DropdownButton = () => {
     },
     {
       label: <Link to={"/plataforma/reservas"}>Reservas</Link>,
-      icon: <UserOutlined />,
+      icon: <FieldTimeOutlined />,
       key: "2",
     },
     {
@@ -81,10 +82,9 @@ export const DropdownButton = () => {
 };
 
 const Container = styled.div`
-
   .mainButton {
     font-size: 14px;
-    color: #FFF;
+    color: #fff;
     span {
       font-weight: 400;
     }

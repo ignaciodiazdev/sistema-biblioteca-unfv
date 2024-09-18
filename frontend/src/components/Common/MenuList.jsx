@@ -22,7 +22,7 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
   const itemsUsuario = [
     {
       key: "home",
-      icon: <BookOutlined />,
+      icon: <HomeOutlined />,
       label: <Link to="/plataforma/">Inicio</Link>,
     },
     {
@@ -119,7 +119,7 @@ export const MenuList = ({ darkTheme, itemsUser }) => {
       theme={"dark"}
       mode="inline"
       className="menu-bar"
-      style= {{fontSize: "14px"}}
+      style={{ fontSize: "14px" }}
       items={auth.me.is_staff === true ? itemsAdmin : itemsUsuario}
       defaultSelectedKeys={"home"}
     ></Menu>
